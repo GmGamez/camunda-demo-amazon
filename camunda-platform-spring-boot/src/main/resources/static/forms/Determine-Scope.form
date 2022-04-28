@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "text": "<img src=\"http://localhost:8080/online/logo.png\"><h2>Determine Scope</h2>",
+      "type": "text",
+      "id": "Field_1bod4fz"
+    },
+    {
+      "label": "Modality",
+      "type": "textfield",
+      "id": "Field_0m8ji2g",
+      "key": "modality"
+    },
+    {
+      "label": "Content Available (%)",
+      "type": "number",
+      "id": "Field_0tdn31q",
+      "key": "contentAvailable"
+    },
+    {
+      "label": "SME Availability",
+      "type": "textfield",
+      "id": "Field_1buobn5",
+      "key": "smeAvailability"
+    },
+    {
+      "values": [
+        {
+          "label": "Low",
+          "value": "Low"
+        },
+        {
+          "label": "Medium",
+          "value": "Medium"
+        },
+        {
+          "label": "High",
+          "value": "High"
+        },
+        {
+          "label": "Guided Publishing",
+          "value": "Guided Publishing"
+        }
+      ],
+      "label": "Determine Scope (Effort)",
+      "type": "select",
+      "id": "Field_15ijiq9",
+      "key": "scope",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "determineScope"
+}

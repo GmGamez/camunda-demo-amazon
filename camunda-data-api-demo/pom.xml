@@ -11,7 +11,7 @@
   <description>Spring Boot Application using [Camunda](http://docs.camunda.org).</description>
 
   <properties>
-    <camunda.version>7.16.0-ee</camunda.version>
+    <camunda.version>7.16.5-ee</camunda.version>
     <!--
     Adjust if you want to use EE:
     <camunda.version>7.8.0-ee</camunda.version>
@@ -25,7 +25,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <version.java>1.8</version.java>
-
+    <maven.test.skip>true</maven.test.skip>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <failOnMissingWebXml>false</failOnMissingWebXml>
 
@@ -312,9 +312,9 @@
 
   <repositories>
     <repository>
-      <id>camunda-bpm-nexus</id>
+      <id>camunda-nexus</id>
       <name>Camunda BPM Maven Repository</name>
-      <url>https://app.camunda.com/nexus/content/groups/public</url>
+      <url>https://camunda.jfrog.io/artifactory/internal/</url>
     </repository>
     <!-- enable this for EE dependencies -->
     <repository>

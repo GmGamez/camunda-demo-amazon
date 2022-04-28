@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "text": "# Determine Information  Completeness",
+      "type": "text",
+      "id": "Field_10k31bb"
+    },
+    {
+      "label": "Domain",
+      "type": "textfield",
+      "id": "Field_0lql5bt",
+      "key": "request.domain"
+    },
+    {
+      "label": "Requesting Team",
+      "type": "textfield",
+      "id": "Field_1yzt1rm",
+      "key": "request.requestingTeam"
+    },
+    {
+      "label": "Description of the Product",
+      "type": "textfield",
+      "id": "Field_0mkrc4b",
+      "key": "request.description"
+    },
+    {
+      "label": "Target Audience",
+      "type": "textfield",
+      "id": "Field_1khbj2b",
+      "key": "request.audience"
+    },
+    {
+      "label": "Modality",
+      "type": "textfield",
+      "id": "Field_18qa92a",
+      "key": "request.modality"
+    },
+    {
+      "label": "Course Duration (In Days)",
+      "type": "number",
+      "id": "Field_0xp3k27",
+      "key": "request.courseDuration"
+    },
+    {
+      "label": "Existing Content",
+      "type": "textfield",
+      "id": "Field_0bhcrka",
+      "key": "request.existingContent"
+    },
+    {
+      "label": "Reason for Request",
+      "type": "textfield",
+      "id": "Field_1yr03r7",
+      "key": "request.reason"
+    },
+    {
+      "label": "SME Availability",
+      "type": "textfield",
+      "id": "Field_1rzvfmy",
+      "key": "smeAvailability"
+    },
+    {
+      "action": "submit",
+      "label": "Submit",
+      "type": "button",
+      "id": "Field_0b1wqxp",
+      "key": "field_1uovqwe"
+    }
+  ],
+  "type": "default",
+  "id": "infoComplete"
+}

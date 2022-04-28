@@ -1,7 +1,7 @@
 debug: false
 #logging.level.com.camunda.*: INFO
 
-server.port: 8081
+server.port: 8080
 
 # See the docker-compose to use PostgreSQL
 spring:
@@ -33,12 +33,15 @@ camunda.bpm:
     password: demo
     firstName: Demo
     lastName: Demo
-
   filter:
     create: All Tasks
-
+  deployment-resource-pattern:
+    - classpath*:**/*.bpmn
+    - classpath*:**/*.bpmn20.xml
+    - classpath*:**/*.dmn
+    - classpath*:**/*.dmn11.xml
+    - classpath*:**/*.form
   history-level: FULL
-
   generic-properties:
     properties:
       java-serialization-format-enabled: true

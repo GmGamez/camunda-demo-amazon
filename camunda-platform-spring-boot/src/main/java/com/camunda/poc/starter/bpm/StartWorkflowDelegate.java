@@ -56,12 +56,12 @@ public class StartWorkflowDelegate implements JavaDelegate {
             + " \n\n");
 
     //Get the Spin Json object from the Camunda field injection expression
-    SpinJsonNode bizObj = BpmUtil.getBizObjectNode(execution, bizObject);
+   // SpinJsonNode bizObj = BpmUtil.getBizObjectNode(execution, bizObject);
 
-    bizObj = BpmUtil.setBusinessKey(execution, bizObj);
+    //bizObj = BpmUtil.setBusinessKey(execution, bizObj);
 
     //Get the business object
-    JsonValue jsonValue = SpinValues.jsonValue(bizObj).create();
+    //JsonValue jsonValue = SpinValues.jsonValue(bizObj).create();
 
     String wfKey = BpmUtil.getWorkflowKey(execution, workflowKey);
 
@@ -69,11 +69,11 @@ public class StartWorkflowDelegate implements JavaDelegate {
 
     //Use Camunda Message API to start the workflow
     runtimeService.correlateMessage(
-            wfKey,
-            bizObj.prop("key").stringValue(),
+            wfKey
+      //      bizObj.prop("key").stringValue(),
             //Pass the JSON Object to Camunda starting the workflow
-            Variables.createVariables()
-                    .putValueTyped(bizObjectNameStr, jsonValue)
+            //Variables.createVariables()
+            //        .putValueTyped(bizObjectNameStr, jsonValue)
     );
 
   }

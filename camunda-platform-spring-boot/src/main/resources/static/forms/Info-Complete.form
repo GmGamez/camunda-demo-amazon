@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "text": "<img src=\"http://localhost:8080/online/logo.png\"><h2>Instructions:</h2><p>Based on internal protocol and the given information below, please determine if the information is complete to continue with the process",
+      "type": "text",
+      "id": "Field_0acz53i"
+    },
+    {
+      "label": "Domain",
+      "type": "textfield",
+      "id": "Field_0lql5bt",
+      "key": "domain"
+    },
+    {
+      "label": "Requesting Team",
+      "type": "textfield",
+      "id": "Field_1yzt1rm",
+      "key": "requestingTeam"
+    },
+    {
+      "label": "Description of the Product",
+      "type": "textfield",
+      "id": "Field_0mkrc4b",
+      "key": "description"
+    },
+    {
+      "label": "Target Audience",
+      "type": "textfield",
+      "id": "Field_1khbj2b",
+      "key": "audience"
+    },
+    {
+      "label": "Modality",
+      "type": "textfield",
+      "id": "Field_18qa92a",
+      "key": "modality"
+    },
+    {
+      "label": "Duration (in days)",
+      "type": "number",
+      "id": "Field_19u7prz",
+      "key": "duration"
+    },
+    {
+      "label": "Existing Content (%)",
+      "type": "number",
+      "id": "Field_11izqxa",
+      "key": "contentAvailable",
+      "description": "Estimated value for already created content"
+    },
+    {
+      "label": "Reason for Request",
+      "type": "textfield",
+      "id": "Field_1yr03r7",
+      "key": "reason"
+    },
+    {
+      "label": "SME Availability",
+      "type": "textfield",
+      "id": "Field_1rzvfmy",
+      "key": "smeAvailability"
+    },
+    {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "Yes"
+        },
+        {
+          "label": "No",
+          "value": "No"
+        }
+      ],
+      "label": "Is the information complete?",
+      "type": "select",
+      "id": "Field_04ifgth",
+      "key": "complete",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Notes",
+      "type": "textfield",
+      "id": "Field_12j8af1",
+      "key": "notes",
+      "validate": {
+        "required": false
+      }
+    }
+  ],
+  "type": "default",
+  "id": "infoComplete"
+}

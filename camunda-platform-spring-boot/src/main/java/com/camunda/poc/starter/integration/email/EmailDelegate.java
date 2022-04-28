@@ -25,9 +25,9 @@ public class EmailDelegate implements JavaDelegate {
     @Override
     public void execute(DelegateExecution execution) throws Exception {
 
-        String emailSubject = (String) execution.getVariableLocal("subject");
-        String emailBody = (String) execution.getVariableLocal("body");
-        String emailTo = (String) execution.getVariableLocal("emailTo");
+        String emailSubject = "Details Necessary";
+        String emailBody = "Please provide more details about your request";
+        String emailTo = "gustavo.mendoza@camunda.com";
 
         if(emailBody == null || emailBody.isEmpty()) {
             emailBody = (String) execution.getVariable("messageBody");

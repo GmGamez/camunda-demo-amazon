@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "text": "<img src=\"http://localhost:8080/online/logo.png\"><h2>New Request Intake Form:</h2><p>Please provide all the following details to start a new request",
+      "type": "text",
+      "id": "Field_0acz53i"
+    },
+    {
+      "values": [
+        {
+          "label": "Architecting",
+          "value": "Architecting"
+        },
+        {
+          "label": "Development",
+          "value": "Development"
+        },
+        {
+          "label": "DevOps",
+          "value": "DevOps"
+        }
+      ],
+      "label": "Domain",
+      "type": "select",
+      "id": "Field_1f60xhy",
+      "key": "domain",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Well Architected Team",
+          "value": "Well Architected Team"
+        }
+      ],
+      "label": "Requesting Team",
+      "type": "select",
+      "id": "Field_1p9psfp",
+      "key": "requestingTeam",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Solution Architect",
+          "value": "Solution Architect"
+        },
+        {
+          "value": "Developer",
+          "label": "Developer"
+        },
+        {
+          "label": "DevOps",
+          "value": "DevOps"
+        }
+      ],
+      "label": "Audience",
+      "type": "select",
+      "id": "Field_1n1eylv",
+      "key": "audience",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Digital",
+          "value": "Digital"
+        },
+        {
+          "label": "Instructor Led",
+          "value": "Instructor Led"
+        }
+      ],
+      "label": "Modality",
+      "type": "radio",
+      "id": "Field_0alvfx2",
+      "key": "modality",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Description",
+      "type": "textfield",
+      "id": "Field_0mkrc4b",
+      "key": "description",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Duration (in days)",
+      "type": "number",
+      "id": "Field_0wy0spr",
+      "key": "duration",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "label": "Existing Content (%)",
+      "type": "number",
+      "id": "Field_0s7qta4",
+      "key": "contentAvailable",
+      "description": "What is the estimated value for already created content",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Customer complaint",
+          "value": "Customer complaint"
+        },
+        {
+          "label": "Major update",
+          "value": "Major update"
+        },
+        {
+          "label": "Minor update",
+          "value": "Minor update"
+        },
+        {
+          "label": "Broken Lab",
+          "value": "Broken Lab"
+        }
+      ],
+      "label": "Triggering Factor",
+      "type": "select",
+      "id": "Field_0s7z19s",
+      "key": "reason",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Create content",
+          "value": "Create content"
+        },
+        {
+          "label": "Development",
+          "value": "Development"
+        },
+        {
+          "label": "Provide feedback",
+          "value": "Provide feedback"
+        }
+      ],
+      "label": "SME Availability",
+      "type": "select",
+      "id": "Field_13ce40z",
+      "key": "smeAvailability",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "newIntake"
+}

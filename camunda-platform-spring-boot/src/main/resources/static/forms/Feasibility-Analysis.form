@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "text": "<img src=\"http://localhost:8080/online/logo.png\"><h2>Curation Feasibility</h2>",
+      "type": "text",
+      "id": "Field_00uqdrq"
+    },
+    {
+      "label": "Domain",
+      "type": "textfield",
+      "id": "Field_0wz8jd7",
+      "key": "domain"
+    },
+    {
+      "label": "Description",
+      "type": "textfield",
+      "id": "Field_1601dl3",
+      "key": "description"
+    },
+    {
+      "label": "Notes",
+      "type": "textfield",
+      "id": "Field_1v0xrn3",
+      "key": "notes"
+    },
+    {
+      "label": "Modality",
+      "type": "textfield",
+      "id": "Field_08j83kt",
+      "key": "modality"
+    },
+    {
+      "label": "Content Available",
+      "type": "textfield",
+      "id": "Field_1ebh51q",
+      "key": "contentAvailable"
+    },
+    {
+      "label": "Team Name",
+      "type": "textfield",
+      "id": "Field_0tj3vb6",
+      "key": "teamName"
+    },
+    {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "Yes"
+        },
+        {
+          "label": "No",
+          "value": "No"
+        }
+      ],
+      "label": "Feasible",
+      "type": "select",
+      "id": "Field_1iayn6n",
+      "key": "feasible",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "determineFeasibility"
+}

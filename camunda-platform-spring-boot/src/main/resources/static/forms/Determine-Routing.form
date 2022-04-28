@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "text": "<img src=\"http://localhost:8080/online/logo.png\"><h2>Determine Routing</h2>",
+      "type": "text",
+      "id": "Field_1pada37"
+    },
+    {
+      "label": "Modality",
+      "type": "textfield",
+      "id": "Field_0wmq27t",
+      "key": "modality"
+    },
+    {
+      "label": "Scope (Effort)",
+      "type": "textfield",
+      "id": "Field_08201q2",
+      "key": "scope"
+    },
+    {
+      "values": [
+        {
+          "label": "Curriculum Development",
+          "value": "Curriculum Development"
+        },
+        {
+          "label": "Curation",
+          "value": "Curation"
+        },
+        {
+          "label": "Guided Publishing",
+          "value": "Guided Publishing"
+        }
+      ],
+      "label": "Team Category",
+      "type": "select",
+      "id": "Field_1okyws6",
+      "key": "teamCategory",
+      "validate": {
+        "required": true
+      }
+    },
+    {
+      "values": [
+        {
+          "label": "Low",
+          "value": "Low"
+        },
+        {
+          "label": "Medium",
+          "value": "Medium"
+        },
+        {
+          "label": "High",
+          "value": "High"
+        },
+        {
+          "label": "Any",
+          "value": "Any"
+        }
+      ],
+      "label": "Team Utilization Requirements",
+      "type": "select",
+      "id": "Field_15r6ged",
+      "key": "teamUtilization",
+      "validate": {
+        "required": true
+      },
+      "description": "This value determines how busy the team will need to be to handle this request"
+    }
+  ],
+  "type": "default",
+  "id": "determineRouting"
+}

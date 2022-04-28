@@ -32,6 +32,8 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <version.java>1.8</version.java>
+    <maven.test.skip>true</maven.test.skip>
+
 
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <failOnMissingWebXml>false</failOnMissingWebXml>
@@ -68,11 +70,16 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      
     </dependencies>
   </dependencyManagement>
 
   <dependencies>
+    <dependency>
+      <groupId>org.camunda.spin</groupId>
+      <artifactId>camunda-spin-core</artifactId>
+      <!-- The version is omitted here, because it is managed via the BOM.
+        Declare a concrete version if you do not use the BOM -->
+    </dependency>
 
 	<!-- Cmaunda Dependencies -->
     <dependency>
@@ -131,7 +138,11 @@
       <groupId>org.camunda.bpm</groupId>
       <artifactId>camunda-engine-plugin-spin</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.camunda.spin</groupId>
+      <artifactId>camunda-spin-dataformat-json-jackson</artifactId>
+      <version>1.11.0</version>
+    </dependency>
 	<!-- Testing -->
 <!--    <dependency>-->
 <!--      <groupId>org.springframework.boot</groupId>-->
@@ -324,15 +335,15 @@
 
   <repositories>
     <repository>
-      <id>camunda-bpm-nexus</id>
+      <id>camunda-nexus</id>
       <name>Camunda BPM Maven Repository</name>
-      <url>https://app.camunda.com/nexus/content/groups/public</url>
+      <url>https://camunda.jfrog.io/artifactory/internal/</url>
     </repository>
     <!-- enable this for EE dependencies -->
     <repository>
       <id>camunda-bpm-nexus-ee</id>
       <name>camunda-bpm-nexus</name>
-      <url>https://app.camunda.com/nexus/content/repositories/camunda-bpm-ee</url>
+      <url>https://app.camunda.com/nexus/content/repositories/camunda-bpm-ee/</url>
     </repository>
 
   </repositories>

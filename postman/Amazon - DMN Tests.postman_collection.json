@@ -1,0 +1,559 @@
+{
+	"info": {
+		"_postman_id": "03b02e22-d21c-413e-966e-146c2fd922d0",
+		"name": "Amazon - DMN Tests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Decisions",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8082/engine-rest/decision-definition",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"engine-rest",
+						"decision-definition"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DMN Evaluation - Determine Scope",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"variables\": {\r\n        \"request\": {\r\n\t\t\t\"value\": \"{\\\"modality\\\": \\\"Digital\\\",\\\"contentAvailable\\\": \\\"30\\\",\\\"smeAvailability\\\": \\\"Development\\\"}\",\r\n\t\t\t\"type\": \"Json\"\r\n\t\t}\r\n     }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/decision-definition/key/Determine_Scope/evaluate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"decision-definition",
+						"key",
+						"Determine_Scope",
+						"evaluate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DMN Evaluation - Determine Routing",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"variables\": {\r\n        \"request\": {\r\n\t\t\t\"value\": \"{\\\"modality\\\": \\\"Digital\\\",\\\"contentAvailable\\\": \\\"30\\\",\\\"smeAvailability\\\": \\\"Development\\\"}\",\r\n\t\t\t\"type\": \"Json\"\r\n\t\t},\r\n        \"scope\": {\r\n            \"value\": \"low\"\r\n        }\r\n     }\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/decision-definition/key/Determine_Routing/evaluate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"decision-definition",
+						"key",
+						"Determine_Routing",
+						"evaluate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DMN Evaluation - Risk",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var employmentValues = [\"Unemployed\", \"Self-employed\",\"Freelancer\",\"Salaried\"]\r",
+							"var categories = [\"Basic Package\", \"Premium Package\"]\r",
+							"pm.variables.set(\"employment\", employmentValues[_.random(employmentValues.length -1)]);\r",
+							"pm.variables.set(\"category\", categories[_.random(categories.length -1)]);\r",
+							"pm.collectionVariables.set (\"score\", _.random (10,100));\r",
+							"pm.collectionVariables.set (\"age\", _.random (20,40));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"variables\": {\r\n        \"application\": {\r\n\t\t\t\"value\": \"{\\\"employment\\\": \\\"{{employment}}\\\",\\\"category\\\": \\\"{{category}}\\\", \\\"applicant\\\": {\\\"age\\\": \\\"{{age}}\\\"}}\",\r\n\t\t\t\"type\": \"Json\"\r\n        },\r\n        \"score\": \r\n\t\t{\r\n\t\t\t\"value\": {{score}}\r\n\t\t}    \r\n        }\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8082/engine-rest/decision-definition/key/checkRisk_en/evaluate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"engine-rest",
+						"decision-definition",
+						"key",
+						"checkRisk_en",
+						"evaluate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Camunda - message start REST call - Start BP Submission Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"var uuid = require('uuid');\r",
+							"var myuuid = uuid.v4();\r",
+							"console.log(myuuid);\r",
+							"pm.environment.set(\"businessKeyProcess\", myuuid);"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messageName\" : \"Message_Start_Evaluation_Process\",\n    \"businessKey\" : \"{{businessKeyProcess}}\",\n    \"processVariables\": {\n        \"request\": {\n\t\t\t\"value\": \"{\\\"modality\\\": \\\"Digital\\\",\\\"contentAvailable\\\": \\\"30\\\",\\\"smeAvailability\\\": \\\"Development\\\",\\\"domain\\\": \\\"Architecting\\\",\\\"requestingTeam\\\": \\\"Architecture\\\",\\\"description\\\": \\\"New request\\\",\\\"audience\\\": \\\"Architects\\\",\\\"duration\\\": \\\"4\\\",\\\"contentAvailable\\\": \\\"25\\\",\\\"reason\\\": \\\"New interfaces\\\",\\\"requestID\\\": \\\"{{businessKeyProcess}}\\\"}\",\n\t\t\t\"type\": \"Json\"\n\t\t}\n     },\n   \"withVariablesInReturn\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Camunda - message-Request Additional Information",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messageName\" : \"MESSAGE_Updates_Received\",\n    \"businessKey\" : \"{{businessKeyProcess}}\",\n    \"processVariables\": {\n        \"updates\": {\n            \"value\": \"This is related to the new initiative to enhance our Arquitecture training related to AWS EKS Services\"\n\t\t}\n     },\n   \"withVariablesInReturn\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Camunda - message no BK-1 - Request Additional Information",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messageName\" : \"MESSAGE_Updates_Received\",\n    \"processVariables\": {\n        \"updates\": {\n            \"value\": \"This is related to the new initiative to enhance our Architecture training related to AWS EKS Services\"\n\t\t}\n     },\n   \"withVariablesInReturn\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Camunda - message no BK-2 - Request Additional Information Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messageName\" : \"MESSAGE_Updates_Received\",\n    \"processVariables\": {\n        \"updates\": {\n            \"value\": \"There will be 5 modules: 1. Architecture overview, 2. Design, 3. Integration, 4. Development, 5. Implementation\"\n\t\t}\n     },\n   \"withVariablesInReturn\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Camunda - message-Clarizen confirmation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set (\"clarizenID\", \"ID-\" + _.random (1000,10000));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messageName\" : \"Message_Request_Created_Clarizen\",\n    \"businessKey\" : \"{{businessKeyProcess}}\",\n    \"processVariables\": {\n        \"clarizenProjectID\": {\n            \"value\": \"{{clarizenID}}\"\n\t\t}\n     },\n   \"withVariablesInReturn\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Camunda - message no BK-Clarizen confirmation",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set (\"clarizenID\", \"ID-\" + _.random (1000,10000));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messageName\" : \"Message_Request_Created_Clarizen\",\n    \"processVariables\": {\n        \"clarizenProjectID\": {\n            \"value\": \"{{clarizenID}}\"\n\t\t}\n     },\n   \"withVariablesInReturn\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Camunda - message no Start Project",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.be.ok; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set (\"clarizenID\", \"ID-\" + _.random (1000,10000));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messageName\" : \"Message_Request_Created_Clarizen\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/engine-rest/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"engine-rest",
+						"message"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "score",
+			"value": ""
+		},
+		{
+			"key": "age",
+			"value": ""
+		},
+		{
+			"key": "clarizenID",
+			"value": ""
+		}
+	]
+}

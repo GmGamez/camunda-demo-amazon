@@ -149,9 +149,9 @@
 
   <repositories>
     <repository>
-      <id>camunda-bpm-nexus</id>
+      <id>camunda-nexus</id>
       <name>Camunda Maven Repository</name>
-      <url>https://app.camunda.com/nexus/content/groups/public</url>
+      <url>https://camunda.jfrog.io/artifactory/internal/</url>
     </repository>
     <!-- enable this for EE dependencies (requires credentials in ~/.m2/settings.xml)
     <repository>

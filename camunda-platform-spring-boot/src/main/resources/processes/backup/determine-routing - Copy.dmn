@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="Definitions_864e0c5a-5331-4924-acf3-7b2abd9de83b" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.12.0" camunda:diagramRelationId="441de3ce-31c7-421f-a9ad-21a60c0c1d12">
+  <decision id="Determine_Routing" name="Determine Routing">
+    <informationRequirement id="InformationRequirement_0pbqrs4">
+      <requiredInput href="#InputData_1r37b10" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_18vfzh2">
+      <requiredInput href="#InputData_0lp6om8" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0rhr1t3">
+      <requiredInput href="#InputData_0frbcjm" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0azx1hv">
+      <input id="Input_1" label="Modaility">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>request.modality</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_0l1ok2s">
+          <text>"digital","instructor-led"</text>
+        </inputValues>
+      </input>
+      <input id="InputClause_0ql0fdv" label="Effort" biodi:width="192">
+        <inputExpression id="LiteralExpression_1ah97us" typeRef="string">
+          <text>scope</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_1wubeol" label="Team Category" name="category" typeRef="string" />
+      <output id="Output_1" label="Team Utilization Threshold" name="utilization" typeRef="string" biodi:width="262" />
+      <rule id="DecisionRule_0fp5dvy">
+        <inputEntry id="UnaryTests_0vbi3za">
+          <text>"Instructor Led"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_185skcc">
+          <text>"High"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1chgirk">
+          <text>"Curriculum development"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0e6yodg">
+          <text>"Low"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1y0f4kd">
+        <inputEntry id="UnaryTests_0wj91fx">
+          <text>"Instructor Led"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ka5uxu">
+          <text>"Medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1m0fwr6">
+          <text>"Curriculum development"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08dwvzx">
+          <text>"Medium"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1recmyl">
+        <inputEntry id="UnaryTests_1rvt9cq">
+          <text>"Instructor Led"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mmy7kn">
+          <text>"Low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1mne51s">
+          <text>"Curriculum development"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xi92to">
+          <text>"Any"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1hswz6u">
+        <inputEntry id="UnaryTests_1afxm5c">
+          <text>"Digital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mii6x6">
+          <text>"High"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0y7qct4">
+          <text>"Curriculum development"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mba9pj">
+          <text>"Low"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1o654mn">
+        <inputEntry id="UnaryTests_1gxi9pw">
+          <text>"Digital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0fl4qsd">
+          <text>"Medium"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1k4pmbn">
+          <text>"Curation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fpqyoo">
+          <text>"Medium"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1oz8lfx">
+        <inputEntry id="UnaryTests_1k4zane">
+          <text>"Digital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1lumr1f">
+          <text>"Low"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1wl70ty">
+          <text>"Curation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1v7m5bs">
+          <text>"Any"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jk87ob">
+        <inputEntry id="UnaryTests_05fbdwe">
+          <text>"Digital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0gpqgta">
+          <text>"Guided Publishing"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_18grgs7">
+          <text>"Guided Publishing"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dc6lqo">
+          <text>"Any"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_1r37b10" name="Modality" />
+  <inputData id="InputData_0lp6om8" name="Team Capacity" />
+  <inputData id="InputData_0frbcjm" name="Scope" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Determine_Routing">
+        <dc:Bounds height="80" width="180" x="290" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_01bay9b" dmnElementRef="InputData_1r37b10">
+        <dc:Bounds height="45" width="125" x="158" y="248" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1udjn6i" dmnElementRef="InputData_0lp6om8">
+        <dc:Bounds height="45" width="125" x="338" y="249" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0trn1mj" dmnElementRef="InputData_0frbcjm">
+        <dc:Bounds height="45" width="125" x="518" y="249" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_170x21g" dmnElementRef="InformationRequirement_0pbqrs4">
+        <di:waypoint x="221" y="248" />
+        <di:waypoint x="335" y="180" />
+        <di:waypoint x="335" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0xq4iuv" dmnElementRef="InformationRequirement_18vfzh2">
+        <di:waypoint x="401" y="249" />
+        <di:waypoint x="380" y="180" />
+        <di:waypoint x="380" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_1tj57o0" dmnElementRef="InformationRequirement_0rhr1t3">
+        <di:waypoint x="581" y="249" />
+        <di:waypoint x="425" y="180" />
+        <di:waypoint x="425" y="160" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

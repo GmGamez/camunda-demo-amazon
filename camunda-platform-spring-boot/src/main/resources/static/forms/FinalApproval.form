@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 2,
+  "components": [
+    {
+      "text": "<img src=\"http://localhost:8080/online/logo.png\"><h2>Final Approval</h2>",
+      "type": "text",
+      "id": "Field_17vyttv"
+    },
+    {
+      "label": "Domain",
+      "type": "textfield",
+      "id": "Field_0lql5bt",
+      "key": "domain"
+    },
+    {
+      "label": "Requesting Team",
+      "type": "textfield",
+      "id": "Field_1yzt1rm",
+      "key": "requestingTeam"
+    },
+    {
+      "label": "Description of the Product",
+      "type": "textfield",
+      "id": "Field_0mkrc4b",
+      "key": "description"
+    },
+    {
+      "label": "Target Audience",
+      "type": "textfield",
+      "id": "Field_1khbj2b",
+      "key": "audience"
+    },
+    {
+      "label": "Modality",
+      "type": "textfield",
+      "id": "Field_18qa92a",
+      "key": "modality"
+    },
+    {
+      "label": "Course Duration (In Days)",
+      "type": "number",
+      "id": "Field_0xp3k27",
+      "key": "duration"
+    },
+    {
+      "label": "Existing Content",
+      "type": "textfield",
+      "id": "Field_0bhcrka",
+      "key": "contentAvailable"
+    },
+    {
+      "label": "SME Availability",
+      "type": "textfield",
+      "id": "Field_1rzvfmy",
+      "key": "smeAvailability"
+    },
+    {
+      "values": [
+        {
+          "label": "Yes",
+          "value": "Yes"
+        },
+        {
+          "label": "No",
+          "value": "No"
+        }
+      ],
+      "label": "Final Approval",
+      "type": "radio",
+      "id": "Field_1eq6bnc",
+      "key": "finalApproval",
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "DetermineApproval"
+}

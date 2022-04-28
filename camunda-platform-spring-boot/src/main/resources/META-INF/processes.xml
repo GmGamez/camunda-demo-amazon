@@ -1,0 +1,28 @@
+<process-application
+        xmlns="http://www.camunda.org/schema/1.0/ProcessApplication"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    <process-archive name="Amazon Content Approval Process">
+        <resource>processes/determine-routing.dmn</resource>
+        <resource>processes/determine-scope.dmn</resource>
+        <resource>processes/follow-up-request.bpmn</resource>
+        <resource>processes/product-request.bpmn</resource>
+        <resource>processes/self-guided-development.bpmn</resource>
+        <resource>processes/clarizen-project.bpmn</resource>
+        <resource>static/forms/Info-Complete.form</resource>
+        <resource>static/forms/New-Intake.form</resource>
+        <resource>static/forms/Determine-Routing.form</resource>
+        <resource>static/forms/Determine-Scope.form</resource>
+        <resource>static/forms/Feasibility-Analysis.form</resource>
+        <resource>static/forms/FinalApproval.form</resource>
+        <resource>static/online/logo.png</resource>
+
+        <properties>
+            <property name="resourceRootPath">classpath:processes/</property>
+            <property name="resourceRootPath">classpath:static/forms/</property>
+            <property name="isDeleteUponUndeploy">false</property>
+            <property name="isScanForProcessDefinitions">true</property>
+        </properties>
+    </process-archive>
+
+</process-application>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_a64ce2e3-8ee0-42a6-9423-01179756e913" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.12.0" camunda:diagramRelationId="b6f1c591-34bf-46a7-b582-e15e25e24a56">
+  <decision id="Determine_Scope" name="Determine Scope">
+    <informationRequirement id="InformationRequirement_025owg7">
+      <requiredInput href="#InputData_0v644tm" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1n9e755">
+      <requiredInput href="#InputData_1u7zier" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0gj6jdd">
+      <requiredInput href="#InputData_1aahuiv" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_07pgtk4">
+      <requiredInput href="#InputData_17hxvfh" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0azx1hv">
+      <input id="Input_1" label="Modality">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>request.modality</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1l040k2" label="Content Available" biodi:width="193">
+        <inputExpression id="LiteralExpression_1xhvzyd" typeRef="double">
+          <text>request.contentAvailable</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1cupx35" label="SME Availability">
+        <inputExpression id="LiteralExpression_1iumknh" typeRef="string">
+          <text>request.smeAvailability</text>
+        </inputExpression>
+        <inputValues id="UnaryTests_19dc3tv">
+          <text>"Create content","Development","Provide feedback"</text>
+        </inputValues>
+      </input>
+      <output id="Output_1" label="Scope" name="Scope" typeRef="string" biodi:width="192">
+        <outputValues id="UnaryTests_0j814sz">
+          <text>"GP","Low","Medium","High"</text>
+        </outputValues>
+      </output>
+      <rule id="DecisionRule_01qifq0">
+        <inputEntry id="UnaryTests_04iz3ix">
+          <text>"Digital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1tvb73d">
+          <text>&lt;=25</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jac1pj">
+          <text>"Create content","Development"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1aa3ur4">
+          <text>"Medium"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cjf0sa">
+        <inputEntry id="UnaryTests_14nnpb5">
+          <text>"Digital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nwjkr4">
+          <text>&lt;=25</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0rb32t9">
+          <text>"Provide feedback"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ngiato">
+          <text>"High"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11kram0">
+        <inputEntry id="UnaryTests_1dzem2f">
+          <text>"Digital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_12b5103">
+          <text>]25..50]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1iku0yi">
+          <text>"Create content","Development"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f1cypk">
+          <text>"Low"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0q5qd3k">
+        <inputEntry id="UnaryTests_1aeaxgj">
+          <text>"Digital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zvsdau">
+          <text>]25..50]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vw8usv">
+          <text>"Provide feedback"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_16qga86">
+          <text>"Medium"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xxdut1">
+        <inputEntry id="UnaryTests_1vzuacc">
+          <text>"Digital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11cqy3z">
+          <text>&gt;50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ipj781">
+          <text>"Create content"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yemj10">
+          <text>"Low"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hk1wxl">
+        <inputEntry id="UnaryTests_1qtednn">
+          <text>"Digital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1o2kpe1">
+          <text>&gt;50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0mfii4m">
+          <text>"Development"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13nccyu">
+          <text>"Guided Publishing"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wsd8yf">
+        <inputEntry id="UnaryTests_0jvjmjd">
+          <text>"Digital"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0dpvvpp">
+          <text>&gt;50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1v048jf">
+          <text>"Provide feedback"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0x8pzh3">
+          <text>"Medium"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0z7k955">
+        <inputEntry id="UnaryTests_1345vqe">
+          <text>"Instructor Led"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1eb6e2v">
+          <text>&lt;=25</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0e88i7o">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0o1lmhn">
+          <text>"High"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0u9j8db">
+        <inputEntry id="UnaryTests_1kqy2l9">
+          <text>"Instructor Led"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_06qfgbk">
+          <text>]25..50]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vcbhp7">
+          <text>"Provide feedback"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0vi59bn">
+          <text>"High"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jg429m">
+        <inputEntry id="UnaryTests_1tnakfp">
+          <text>"Instructor Led"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_09d90h2">
+          <text>]25..50]</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1crnygr">
+          <text>"Create content","Development"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_053cmgl">
+          <text>"Medium"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0uwl52q">
+        <inputEntry id="UnaryTests_0cru5dv">
+          <text>"Instructor Led"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1gwn4uj">
+          <text>&gt;50</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1b1brny">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1l60j1w">
+          <text>"Medium"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0v644tm" name="Modality" />
+  <inputData id="InputData_1u7zier" name="Time" />
+  <inputData id="InputData_1aahuiv" name="Content available" />
+  <inputData id="InputData_17hxvfh" name="SME availability" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Determine_Scope">
+        <dc:Bounds height="80" width="180" x="393" y="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_0w2cu71" dmnElementRef="InputData_0v644tm">
+        <dc:Bounds height="45" width="125" x="158" y="238" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1hoicc6" dmnElementRef="InputData_1u7zier">
+        <dc:Bounds height="45" width="125" x="337" y="238" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1xlscb8" dmnElementRef="InputData_1aahuiv">
+        <dc:Bounds height="45" width="125" x="518" y="239" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0xvymst" dmnElementRef="InformationRequirement_025owg7">
+        <di:waypoint x="221" y="238" />
+        <di:waypoint x="429" y="180" />
+        <di:waypoint x="429" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_01d4rd5" dmnElementRef="InformationRequirement_1n9e755">
+        <di:waypoint x="400" y="238" />
+        <di:waypoint x="465" y="180" />
+        <di:waypoint x="465" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0015h8x" dmnElementRef="InformationRequirement_0gj6jdd">
+        <di:waypoint x="581" y="239" />
+        <di:waypoint x="501" y="180" />
+        <di:waypoint x="501" y="160" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_12ok0x3" dmnElementRef="InputData_17hxvfh">
+        <dc:Bounds height="45" width="125" x="677" y="238" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0eny0vt" dmnElementRef="InformationRequirement_07pgtk4">
+        <di:waypoint x="740" y="238" />
+        <di:waypoint x="537" y="180" />
+        <di:waypoint x="537" y="160" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
